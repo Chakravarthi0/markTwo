@@ -1,4 +1,5 @@
 const readlineSync = require("readline-sync");
+let chalk  = require('chalk');
 
 let score = 0;
 
@@ -37,7 +38,7 @@ let questions = [
 ]
 
 
- var userName = readlineSync.question("What's your name? ");
+ var userName = readlineSync.question("What's your name? \n");
 
 console.log(userName + ", welcome to HOW WELL DO YOU KNOW MARVEL MOVIES?");
 
@@ -46,19 +47,19 @@ function play(question, answer) {
   var userAnswer = readlineSync.question(question);
 
   if (userAnswer.toLowerCase() === answer.toLowerCase()) {
-    console.log("You are right!");
+    console.log(chalk.green("You are right!"));
     score++;
     
   } else {
-    console.log("You are wrong!");   
+    console.log(chalk.red("You are wrong!"));   
   }
 
-  console.log("current score: ", score);
-  console.log("-------------")
+  console.log("\ncurrent score: ", score);
+  console.log("-------------\n");
 }
 
 for (let i=0; i<questions.length; i++) {
-    play(questions[i].question, questions[i].answer)
+    play(questions[i].question, questions[i].answer);
   }
 
 
@@ -71,4 +72,4 @@ for (let i=0; i<questions.length; i++) {
   }
 
 
-  console.log("If you have beaten the high score, send me  ascreenshot of your score, I will update it")
+  console.log(chalk.cyanBright("If you have beaten the high score, send me  ascreenshot of your score, I will update it"));
